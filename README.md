@@ -2,6 +2,39 @@
 
 Uma classe Java projetada para lidar com arquivos JSON. Esta classe fornece métodos para criar, verificar e manipular arquivos JSON, com foco em criar uma abordagem estruturada para lidar com dados JSON.
 
+#### Uso Básico
+
+A seguir, um exemplo de como utilizar a classe `JsonFileHandler`:
+
+```java
+public class ExemploDeUso {
+
+    public static void main(String[] args) {
+        // Defina o diretório e nome do arquivo JSON
+        String directory = "src/bd/";
+        String jsonName = "0";
+
+        // Defina os nomes dos objetos e as informações associadas
+        String[][] objectNames = {{"access", "Colors"}};
+        String[][] informations = {{"firstAccess:0", "Defaut:ffffff"}};
+
+        // Instancie a classe JsonFileHandler
+        JsonFileHandler jsonHandler = new JsonFileHandler();
+
+        // Crie o arquivo JSON e insira os dados, se ainda não existir
+        jsonHandler.createJsonFile(directory, jsonName, objectNames, informations);
+
+        // Verifique se os dados correspondem ao conteúdo atual do arquivo
+        boolean contentMatches = jsonHandler.checkContentJsonFile(directory, jsonName, objectNames, informations);
+
+        if (contentMatches) {
+            System.out.println("Os dados no arquivo correspondem às expectativas.");
+        } else {
+            System.out.println("Os dados no arquivo não correspondem às expectativas.");
+        }
+    }
+}
+```
 ## Métodos
 
 ### `createJsonFile`
